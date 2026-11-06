@@ -1,0 +1,14 @@
+{
+  "name": "famgenie",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx wrangler pages dev public --compatibility-date=2026-10-01 --d1 DB=famgenie",
+    "test": "node test/shared.test.mjs && node test/sms.test.mjs",
+    "test:e2e": "node test/e2e.test.mjs",
+    "build:demo": "node scripts/build-demo.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.158.0"
+  }
+}

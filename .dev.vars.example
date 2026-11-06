@@ -1,0 +1,20 @@
+# Copy to .dev.vars for local testing (never commit .dev.vars).
+# In production, add these in Cloudflare: Pages project > Settings > Variables and Secrets (type: Secret).
+
+# Sign-in emails (Resend)
+RESEND_API_KEY=re_xxx
+EMAIL_FROM=FamGenie <hello@yourdomain.com>
+
+# Texting (Twilio)
+TWILIO_ACCOUNT_SID=ACxxx
+TWILIO_AUTH_TOKEN=xxx
+TWILIO_FROM=+13125550100
+# The public address Twilio calls, used to check Twilio's signature (no trailing slash)
+PUBLIC_URL=https://famgenie.pages.dev
+
+# How many days to keep location readings and check-ins (default 30)
+# RETENTION_DAYS=30
+
+# Local testing only: print emails and texts to the console instead of sending (never set in production)
+# DEV_EMAIL_LOG=1
+# DEV_SMS_LOG=1

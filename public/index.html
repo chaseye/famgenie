@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FamGenie</title>
+<meta name="description" content="FamGenie is your family's AI assistant: kids' check-ins, one inbox for tutors, teachers and coaches, and kids' spending with parent approval.">
+<meta name="theme-color" content="#F2B53A">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<!--APP-->
+<div class="app">
+  <header class="bar" id="bar"></header>
+  <main class="screen" id="screen"><p class="empty">Loading…</p></main>
+</div>
+<nav class="tabs" id="tabs" aria-label="Main"></nav>
+<div class="scrim" id="scrim" hidden></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden></section>
+<div class="toast" id="toast" role="status" hidden></div>
+<input type="file" id="photoInput" accept="image/*" hidden>
+<input type="file" id="vcfInput" accept=".vcf,text/vcard,text/x-vcard" hidden>
+<!--/APP-->
+<script type="module" src="/assets/app.js"></script>
+</body>
+</html>
