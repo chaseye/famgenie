@@ -9,8 +9,13 @@ import {join} from 'node:path';
 const PORT = 8799, BASE = `http://127.0.0.1:${PORT}`;
 const persist = mkdtempSync(join(tmpdir(), 'famgenie-e2e-'));
 let logs = '';
-const wr = spawn('npx', ['wrangler', 'pages', 'dev', 'public', '--port', String(PORT), '--ip', '127.0.0.1', '--d1', 'DB=famgenie',
-  '--binding', 'DEV_EMAIL_LOG=1', '--binding', 'DEV_SMS_LOG=1', '--compatibility-date=2026-10-01', '--persist-to', persist],
+// E2E_MODE=pages runs it as Cloudflare Pages; the default runs it as the Worker in wrangler.jsonc.
+const PAGES = process.env.E2E_MODE === 'pages';
+const args = PAGES
+  ? ['wrangler', 'pages', 'dev', 'public', '--port', String(PORT), '--ip', '127.0.0.1', '--d1', 'DB=famgenie',
+    '--binding', 'DEV_EMAIL_LOG=1', '--binding', 'DEV_SMS_LOG=1', '--compatibility-date=2026-10-01', '--persist-to', persist]
+  : ['wrangler', 'dev', '--port', String(PORT), '--ip', '127.0.0.1', '--var', 'DEV_EMAIL_LOG:1', '--var', 'DEV_SMS_LOG:1', '--persist-to', persist];
+const wr = spawn('npx', args,
   {cwd: new URL('..', import.meta.url).pathname, detached: true, env: {...process.env, NO_COLOR: '1', WRANGLER_SEND_METRICS: 'false'}});
 wr.stdout.on('data', (d) => { logs += d; });
 wr.stderr.on('data', (d) => { logs += d; });

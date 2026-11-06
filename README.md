@@ -17,7 +17,8 @@ public/                   static app (Cloudflare Pages)
   assets/app.js           parent app (live API, or a demo stored in the browser)
   assets/shared.js        location options, phone numbers, place matching, money math (shared with the API)
   assets/style.css
-functions/                Cloudflare Pages Functions
+src/worker.js             Worker entry: serves public/ and routes to the handlers below
+functions/                API handlers (Pages Functions format, also used by the Worker)
   api/auth/*              one-time email sign-in links (Resend)
   api/state.js            everything the app shows
   api/family.js           save parent, kids, contacts, places
@@ -41,9 +42,9 @@ Without accounts or texting set up, the app runs as a clearly labeled **demo** i
 ```sh
 cp .dev.vars.example .dev.vars   # set DEV_EMAIL_LOG=1 and DEV_SMS_LOG=1 to print instead of send
 npm install
-npm run dev                      # http://localhost:8788
+npm run dev                      # http://localhost:8787 (Worker); npm run dev:pages for Pages
 npm test                         # unit tests
-npm run test:e2e                 # full API test on a throwaway local database
+npm run test:e2e                 # full API test on a throwaway local database (Worker; test:e2e:pages for Pages)
 npm run build:demo               # dist/famgenie-demo.html, a single-file demo
 ```
 

@@ -11,7 +11,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: for f in public/assets/*.js lib/*.js $(find functions -name '*.js') scripts/*.mjs; do node --check "$f"; done
+      - run: for f in public/assets/*.js lib/*.js src/*.js $(find functions -name '*.js') scripts/*.mjs; do node --check "$f"; done
       - run: npm test
       - run: npm ci
       - run: npm run test:e2e
+      - run: npm run test:e2e:pages

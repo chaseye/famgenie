@@ -5,20 +5,17 @@ About 30–45 minutes. Everything below has a free tier or trial.
 ## 1. Let Claude push the code to GitHub
 Done: `chaseye/famgenie` is connected to the Claude GitHub app.
 
-## 2. Create the Cloudflare Pages site
-1. Cloudflare dashboard → Workers & Pages → Create → Pages → **Connect to Git** → pick `chaseye/famgenie`.
-2. Build settings: Framework preset **None**, Build command *(empty)*, Build output directory **`public`**. Save and Deploy.
+## 2. The Cloudflare Worker (already done)
+`famgenie` is a Worker connected to `chaseye/famgenie`: every push to `main` builds and deploys it to
+`https://famgenie.chase-51e.workers.dev`. The setup lives in `wrangler.jsonc` (app files from `public/`, API in `src/worker.js`).
 
-The app is now live at `https://famgenie.pages.dev` in demo mode.
-
-## 3. Database
-1. Cloudflare → Storage & Databases → D1 → Create database, name it `famgenie`.
-2. Pages project → Settings → Bindings → Add → D1 database: Variable name `DB`, database `famgenie`.
-   Tables are created automatically on first use.
+## 3. Database (already done)
+D1 database `famgenie` is created, and its ID is in `wrangler.jsonc`, so the `DB` binding is applied on every deploy.
+Tables are created automatically on first use. There's nothing to bind in the dashboard; bindings added there are replaced by `wrangler.jsonc` on the next deploy.
 
 ## 4. Sign-in email (Resend)
 1. Sign up at https://resend.com → API Keys → Create.
-2. Add it in Cloudflare (Settings → Variables and Secrets, type **Secret**): `RESEND_API_KEY`.
+2. Add it in Cloudflare (Workers & Pages → famgenie → Settings → Variables and Secrets → Add, type **Secret**): `RESEND_API_KEY`.
 3. Until you verify your own domain in Resend, emails only go to your own Resend account address (fine for testing).
    To email everyone, verify a domain in Resend and add variable `EMAIL_FROM` = `FamGenie <hello@yourdomain.com>`.
 
@@ -26,17 +23,17 @@ The app is now live at `https://famgenie.pages.dev` in demo mode.
 1. Sign up at https://www.twilio.com, buy one US number with SMS.
 2. **US texting needs A2P 10DLC registration** (brand + campaign) before carriers deliver at volume. Start it early; approval can take days.
    Describe the use case as "parent-initiated check-ins and messages between a family and their children's tutors, teachers and coaches".
-3. Add in Cloudflare: Secrets `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`; variables `TWILIO_FROM` (e.g. `+13125550100`) and `PUBLIC_URL` (`https://famgenie.pages.dev`, no trailing slash).
-4. In Twilio → Phone Numbers → your number → Messaging → "A message comes in": Webhook, `https://famgenie.pages.dev/hooks/sms`, HTTP POST.
+3. Add in Cloudflare: Secrets `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`; variables `TWILIO_FROM` (e.g. `+13125550100`) and `PUBLIC_URL` (`https://famgenie.chase-51e.workers.dev`, no trailing slash).
+4. In Twilio → Phone Numbers → your number → Messaging → "A message comes in": Webhook, `https://famgenie.chase-51e.workers.dev/hooks/sms`, HTTP POST.
 
 ## 6. Redeploy and check
-1. Deployments → **Retry deployment** (settings apply on the next deploy).
+1. Secrets apply right away; if the site doesn't pick them up, open Deployments and redeploy the latest version.
 2. Open the site: it should show the sign-in screen. Sign in with your email.
 3. Set up your family. Settings shows "Texting: on" when Twilio is configured.
 4. Send yourself a check-in (add your own number as a child to try it).
 
 ## 7. Optional
-- **Custom domain:** Project → Custom domains (e.g. `famgenie.app`). Update `PUBLIC_URL` and the Twilio webhook.
+- **Custom domain:** Worker → Settings → Domains & Routes → Add custom domain (e.g. `famgenie.app`). Update `PUBLIC_URL` and the Twilio webhook.
 - **Retention:** variable `RETENTION_DAYS` (default 30) controls how long location readings are kept.
 
 ## What's next (not built yet)

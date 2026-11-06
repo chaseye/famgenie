@@ -1,0 +1,14 @@
+// FamGenie as a Cloudflare Worker (static app in public/ + API in src/worker.js).
+// Secrets (RESEND_API_KEY, TWILIO_*) are added in the dashboard: Worker → Settings → Variables and Secrets.
+{
+  "name": "famgenie",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {"directory": "./public", "binding": "ASSETS"},
+  "d1_databases": [
+    {"binding": "DB", "database_name": "famgenie", "database_id": "152607cf-d1b8-4ed6-93a9-874c81ac5caf"}
+  ],
+  // Keep variables set in the dashboard (EMAIL_FROM, TWILIO_FROM, PUBLIC_URL…) when a new version deploys.
+  "keep_vars": true,
+  "observability": {"enabled": true}
+}
