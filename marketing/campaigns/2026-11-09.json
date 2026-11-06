@@ -1,0 +1,49 @@
+{
+  "week": "2026-11-09",
+  "theme": "Meet FamGenie",
+  "goal": "First 50 parent sign-ups; learn which message (check-ins, one inbox, or kids' money) gets the most clicks.",
+  "why": "Launch week. Each ad leads with one real feature so the tracked links show which pain parents care about most. Holiday-season schedules are filling up, so the 'who's driving' moment is timely.",
+  "ads": [
+    {"id": "arrive", "layout": "phone", "screen": "kids", "theme": "dark", "badge": "Free to start",
+      "headline": "Know they **got there**.", "sub": "One tap from your kid's phone, one calm answer on yours. Nothing to install on theirs.",
+      "cta": "Try FamGenie free", "formats": ["story"]},
+    {"id": "inbox", "layout": "phone", "screen": "inbox", "theme": "light",
+      "headline": "Every coach and tutor. **One inbox.**", "sub": "They text one family number. You see it all in one place and choose who gets through.",
+      "cta": "Set up your family"},
+    {"id": "money", "layout": "list", "screen": "money", "theme": "dark",
+      "headline": "Kids ask. **You approve.**", "bullets": ["They ask for money by text", "You pay in Venmo, Zelle or PayPal", "Every dollar tallied by month"],
+      "cta": "See how it works"},
+    {"id": "brief", "layout": "statement", "theme": "light", "badge": "Your family's AI assistant",
+      "headline": "Your family's day, **handled.**", "sub": "FamGenie tells you only what needs you: who isn't there yet, who's waiting on a reply, what's due.",
+      "cta": "Meet FamGenie", "formats": ["story", "square"]}
+  ],
+  "videos": [
+    {"id": "tour", "intro": "brief", "outro": "arrive", "path": "/#home",
+      "steps": [{"wait": 1500}, {"scrollBy": 420}, {"wait": 1400}, {"scrollBy": 520}, {"wait": 1400}, {"scrollBy": 600}, {"wait": 1200},
+        {"click": "a[href='#money']"}, {"wait": 1600}, {"click": "[data-act=pay]"}, {"wait": 2200}]}
+  ],
+  "posts": [
+    {"id": "fb-launch", "channel": "facebook", "ad": "brief", "when": "2026-11-09T19:30:00-06:00",
+      "text": "Meet FamGenie: an AI assistant for busy parents.\n\nIt keeps an eye on the things that slip through the cracks: did they get to practice, which coach texted, who's asking you for money, and what's on the school calendar this week. It only speaks up when something needs you.\n\nFree to start. {link}"},
+    {"id": "fb-inbox", "channel": "facebook", "ad": "inbox", "when": "2026-11-11T12:15:00-06:00",
+      "text": "Three kids, two schools, a tutor, a coach and a parents' group chat. Sound familiar?\n\nWith FamGenie they all text one family number, and you see every message in one place. Anyone you haven't approved waits quietly instead of buzzing your phone.\n\n{link}"},
+    {"id": "fb-money", "channel": "facebook", "ad": "money", "when": "2026-11-13T19:00:00-06:00",
+      "text": "\"Mom, I need $40 for the tutor.\" Now it's one text.\n\nYour kid asks, you approve, and you pay in your own Venmo, Zelle or PayPal. FamGenie never touches the money; it keeps the tally so you can see what each kid spent this month.\n\n{link}"},
+    {"id": "ig-arrive", "channel": "instagram", "ad": "arrive", "when": "2026-11-10T19:30:00-06:00",
+      "text": "The 4:40pm question every parent knows: did they make it to practice?\n\nFamGenie sends your kid a one-tap check-in. They share their location once, only when they tap, and you get a calm answer. No tracking app on their phone.\n\nFree to start. Link in bio.\n\n#parenting #momlife #dadlife #busyparents #familyorganization"},
+    {"id": "ig-inbox", "channel": "instagram", "ad": "inbox", "when": "2026-11-12T20:00:00-06:00",
+      "text": "Coach, tutor, teacher, the room parents' chat... one inbox.\n\nEveryone texts one family number and FamGenie sorts it for you. Link in bio.\n\n#parenting #schoollife #momlife #organizedmom"},
+    {"id": "ig-money", "channel": "instagram", "ad": "money", "when": "2026-11-14T10:00:00-06:00",
+      "text": "Teaching kids about money starts with seeing where it goes.\n\nKids ask by text, you approve, you pay in your own app, and FamGenie keeps the monthly tally per kid. Link in bio.\n\n#parenting #moneytips #teensandmoney #momlife"},
+    {"id": "li-founder", "channel": "linkedin", "ad": "brief", "when": "2026-11-10T08:30:00-06:00",
+      "text": "I've been building FamGenie, an AI assistant for busy parents.\n\nThe problem: a family's day is spread across a location app, school emails, five group chats, a calendar nobody updates, and Venmo requests. Parents become the human router.\n\nWhat FamGenie does:\n- one-tap check-ins from kids (location shared once, only when they tap)\n- one inbox for coaches, tutors, teachers and parent groups\n- kids' money requests you approve, paid in your own apps\n- a short daily brief of only what needs you\n\nWhat I learned building it: the hard part isn't the AI, it's restraint. Rules decide what matters; the AI only words it.\n\nIt's free to start. If you're a parent, I'd love your honest feedback: {link}"},
+    {"id": "rd-sideproject", "channel": "reddit", "where": "r/SideProject", "when": "2026-11-11T11:00:00-06:00",
+      "title": "I built an AI assistant for busy parents: check-ins, one inbox for coaches/tutors, and kids' money requests",
+      "text": "I made FamGenie because our family's logistics lived in six different apps.\n\nWhat it does:\n- Sends a kid a one-time check-in link. They tap, it shares their location once. No background tracking, no app on their phone.\n- Gives the family one number that coaches, tutors and teachers text. Everything lands in one inbox; unknown numbers wait in a held folder.\n- Kids ask for money by text (\"PAY 40 tutor\"); you approve and pay in your own Venmo/Zelle; it tallies spending per kid.\n- A daily brief that only lists what needs you.\n\nStack: Cloudflare Workers + D1, Twilio for texts, Claude for the brief and drafted replies. Plain JS, no framework.\n\nI'd love blunt feedback, especially on what would make you trust an app like this with family info: {link}"},
+    {"id": "tt-tour", "channel": "tiktok", "when": "2026-11-12T19:00:00-06:00",
+      "text": "POV: your family's whole day in one app. Check-ins, coach texts, kids' money requests. #parentsoftiktok #momtok #dadtok #familyorganization",
+      "script": ["0-2s: \"Did they make it to practice?\" on screen over the FamGenie home (hook)", "2-6s: scroll the daily brief: late check-in, tutor waiting, money request", "6-10s: tap Money, then Approve & pay: Venmo opens with the amount filled in", "10-14s: end card: Free to start, link in bio"]},
+    {"id": "grp-parents", "channel": "group", "where": "A local parents' Facebook group or PTO page (ask the admin first)", "when": "2026-11-14T09:30:00-06:00",
+      "text": "Hi everyone, a bit of a different post. I built a small app for our own family's chaos and the admins said it was OK to share.\n\nIt's called FamGenie. Kids can check in with one tap (no tracking app on their phone), coaches and tutors text one family number so it's all in one inbox, and kids can ask for money that you approve and pay in Venmo or Zelle.\n\nIt's free to start. I'm genuinely looking for honest feedback from other parents, good or bad: {link}"}
+  ]
+}
