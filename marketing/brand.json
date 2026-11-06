@@ -1,0 +1,128 @@
+{
+  "name": "FamGenie",
+  "url": "https://famgenie.chase-51e.workers.dev",
+  "displayUrl": "famgenie.chase-51e.workers.dev",
+  "timezone": "America/Chicago",
+  "publicDir": "public",
+  "logo": "logo.svg",
+  "audience": "Busy parents and guardians of kids aged 4 to 22 in the US: working parents, co-parents, families juggling several kids' schools, activities and money.",
+  "voice": "Warm, calm, practical. A friend who has it handled. Short sentences, no jargon, no fear-based selling. Speak to parents, never to kids.",
+  "promise": "Your family's AI assistant: know they got there, one inbox for every tutor, teacher and coach, and kids' money requests you approve.",
+  "facts": [
+    "free to start",
+    "free plan"
+  ],
+  "forbidden": [
+    "track your kids",
+    "spy",
+    "secretly",
+    "read their messages",
+    "monitor their texts",
+    "gps tracker",
+    "never lose",
+    "100% safe",
+    "keep your kids safe",
+    "guaranteed safe"
+  ],
+  "competitors": [
+    "Life360",
+    "Greenlight",
+    "Bark",
+    "Cozi",
+    "FamilyWall",
+    "ClassDojo",
+    "Remind",
+    "Find My"
+  ],
+  "colors": {
+    "accent": "#FFD56B",
+    "accent2": "#F5A524",
+    "accentInk": "#3A2200",
+    "accentShadow": "rgba(245,165,36,.42)",
+    "dark": {
+      "bg": "linear-gradient(160deg,#4A2496,#2A1259 68%,#1E0E40)",
+      "bgSolid": "#1E0E40",
+      "ink": "#F6F1FF",
+      "glow1": "rgba(255,213,107,.42)",
+      "glow2": "rgba(183,156,255,.5)",
+      "chip": "rgba(255,255,255,.14)",
+      "chipInk": "#FFD56B"
+    },
+    "light": {
+      "bg": "linear-gradient(160deg,#FFF6E2,#F5F1FA 55%,#EAE1FF)",
+      "bgSolid": "#F5F1FA",
+      "ink": "#1C1530",
+      "glow1": "#FFD56B",
+      "glow2": "#C9A7FF",
+      "chip": "#EEE7FF",
+      "chipInk": "#6B3FD4"
+    }
+  },
+  "screens": {
+    "serve": {
+      "build": "npm run build:demo",
+      "file": "dist/famgenie-demo.html",
+      "wrap": true
+    },
+    "note": "Sample family shown",
+    "shots": [
+      {
+        "name": "home",
+        "path": "/#home"
+      },
+      {
+        "name": "kids",
+        "path": "/#home",
+        "steps": [
+          {
+            "scroll": "text=Kids"
+          },
+          {
+            "scrollBy": -60
+          },
+          {
+            "wait": 400
+          }
+        ]
+      },
+      {
+        "name": "today",
+        "path": "/#home",
+        "steps": [
+          {
+            "scroll": "#today"
+          },
+          {
+            "scrollBy": -70
+          },
+          {
+            "wait": 400
+          }
+        ]
+      },
+      {
+        "name": "money",
+        "path": "/#money"
+      },
+      {
+        "name": "inbox",
+        "path": "/#inbox"
+      },
+      {
+        "name": "schedules",
+        "path": "/#family",
+        "steps": [
+          {
+            "scroll": "#schedules"
+          },
+          {
+            "scrollBy": -70
+          },
+          {
+            "wait": 400
+          }
+        ]
+      }
+    ]
+  }
+}

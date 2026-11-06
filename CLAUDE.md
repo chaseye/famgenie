@@ -32,3 +32,15 @@ FamGenie is an original app, not a clone. When using these skills:
 - `replica-launch`: landing page, pricing (Free / Family / Family Plus are drafts in Settings) and store listing.
 - `replica-deploy`: skip the parity (`parity.py`) and rebrand sweep (`sweep.py`) gates; they are for clones. Use `npm test` and `npm run test:e2e` instead. Hosting is Cloudflare, not Vercel.
 - Write working files to `replica/` at the repo root. It is not deployed (only `public/` is).
+
+## Enhance, never replace
+Improvements build on what's here. Don't remove, rename or rewrite existing features, copy or flows unless the owner
+asks; propose those under "Needs your call" in `replica/improvements.md` instead. New work goes on a branch with a PR;
+never merge your own PR.
+
+## Growth kit (`MARKETING.md`)
+- Weekly: the `growth-week` skill with the `promoter` and `ad-maker` agents builds `marketing/queue/<week>/` and opens a
+  `growth/<monday>` PR. Merging it is the owner's approval; `.github/workflows/post-social.yml` then posts Facebook and Instagram.
+- Monthly: the `app-improver` agent proposes and builds additive improvements on `improve/<date>`.
+- Ads claim only `marketing/brand.json` facts and real features; `npm run growth:lint -- <campaign>` must pass.
+- No paid ads, no automated posting to Reddit, LinkedIn, TikTok or groups (drafts only), no fake reviews or numbers.

@@ -1,0 +1,38 @@
+# Posts approved Facebook and Instagram items from marketing/queue/*/posts.json.
+# Only what is on main posts, so merging a weekly growth pull request is the approval.
+name: Post approved social
+on:
+  schedule:
+    - cron: "5 14,17,23 * * *"   # about 8am, 11am and 5pm Central (US)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: post-social
+  cancel-in-progress: false
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Post what's due
+        env:
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          META_API_VERSION: ${{ vars.META_API_VERSION }}
+        run: node scripts/marketing/post-meta.mjs
+      - name: Remember what was posted
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain marketing/posted.json)" ]; then
+            git config user.name "growth-bot"
+            git config user.email "growth-bot@users.noreply.github.com"
+            git add marketing/posted.json
+            git commit -m "Record posted social items [skip ci]"
+            git pull --rebase origin main && git push
+          fi
