@@ -1,8 +1,9 @@
 /* PUT /api/family — save the family profile (parent, kids, contacts, places). Returns the cleaned record. */
 import {parentContext, jsonRes} from '../../lib/server.js';
 import {sanitizeFamily, reindexFamily} from '../../lib/family.js';
+import {syncFamilyCalendars} from '../../lib/calendars.js';
 
-export async function onRequestPut({request, env}) {
+export async function onRequestPut({request, env, waitUntil}) {
   const ctx = await parentContext(request, env, {write: true});
   if (ctx instanceof Response) return ctx;
   const {DB, familyId, family: prev} = ctx;
@@ -13,5 +14,11 @@ export async function onRequestPut({request, env}) {
   if (json.length > 3_000_000) return jsonRes({error: 'That’s too much to save at once. Try smaller photos.'}, 413);
   await DB.prepare('UPDATE families SET data_json = ?, updated_at = ? WHERE id = ?').bind(json, Date.now(), familyId).run();
   await reindexFamily(DB, familyId, family);
+  // New or changed calendar links, places or kids: refresh events in the background.
+  const key = (f) => JSON.stringify([f.calendars || [], f.places, f.kids.map((k) => [k.id, k.name]), f.timezone]);
+  if (key(family) !== key(prev) && (family.calendars.length || (prev.calendars || []).length)) {
+    const sync = syncFamilyCalendars(env, DB, familyId, family).catch(() => null);
+    if (waitUntil) waitUntil(sync); else await sync;
+  }
   return jsonRes(family);
 }

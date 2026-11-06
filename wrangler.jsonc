@@ -10,5 +10,7 @@
   ],
   // Keep variables set in the dashboard (EMAIL_FROM, TWILIO_FROM, PUBLIC_URL…) when a new version deploys.
   "keep_vars": true,
+  // Late alerts every 10 minutes; calendars refresh at the top of each hour.
+  "triggers": {"crons": ["*/10 * * * *"]},
   "observability": {"enabled": true}
 }

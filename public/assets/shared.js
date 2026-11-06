@@ -2,7 +2,7 @@
 
 export const METHODS = [
   {id: 'link', name: 'Check-in link', kind: 'direct', ages: [10, 22], needs: 'smartphone',
-    how: 'Hootline texts a one-time link. Your child taps it and the browser shares a single location reading.',
+    how: 'FamGenie texts a one-time link. Your child taps it and the browser shares a single location reading.',
     signal: 'On demand', cost: 'Per text', caveat: 'A snapshot, and only when they tap.'},
   {id: 'reply', name: 'Text reply check-in', kind: 'direct', ages: [8, 22], needs: 'phone',
     how: '"Reply 1 when you get to practice." Works on basic and kid-safe phones too.',
@@ -11,7 +11,7 @@ export const METHODS = [
     how: 'A private page your child saves to their home screen to check in or ask for money any time.',
     signal: 'When they choose', cost: 'Free', caveat: ''},
   {id: 'shortcut', name: 'Phone automation', kind: 'auto', ages: [12, 22], needs: 'smartphone',
-    how: 'An iPhone Shortcuts or Android automation tells Hootline when they arrive at or leave a saved place.',
+    how: 'An iPhone Shortcuts or Android automation tells FamGenie when they arrive at or leave a saved place.',
     signal: 'Automatic arrive / leave', cost: 'Free', caveat: 'Your child can turn it off; some phones ask before it runs.'},
   {id: 'school', name: 'School attendance', kind: 'partner', ages: [5, 18], needs: '',
     how: '"Marked present" from the school\'s parent portal or a district data agreement.',
@@ -23,8 +23,8 @@ export const METHODS = [
     how: 'Gabb, Bark, Gizmo or Apple Watch Family Setup. You check the watch app, then tap to log it here.',
     signal: 'You confirm', cost: 'Device + plan', caveat: 'Watch makers generally don\'t offer outside access.'},
   {id: 'share', name: 'Built-in live sharing', kind: 'manual', ages: [13, 22], needs: 'smartphone',
-    how: 'Find My, Google Maps or WhatsApp live location. Hootline asks your teen to start it for a late night or trip.',
-    signal: 'You view it in that app', cost: 'Free', caveat: 'Hootline can\'t read those apps; it only asks and logs.'},
+    how: 'Find My, Google Maps or WhatsApp live location. FamGenie asks your teen to start it for a late night or trip.',
+    signal: 'You view it in that app', cost: 'Free', caveat: 'FamGenie can\'t read those apps; it only asks and logs.'},
   {id: 'carrier', name: 'Carrier lookup', kind: 'partner', ages: [13, 22], needs: 'phone',
     how: 'Location by phone number from the mobile network, with the line owner\'s consent, through a carrier API aggregator.',
     signal: 'On demand, no app', cost: 'Per lookup', caveat: 'Coming later. US availability is still rolling out.'},
@@ -142,7 +142,7 @@ export function guessRequest(rest, contacts) {
   return {contactId: contact?.id || '', payee: contact?.name || '', category};
 }
 
-/* Pre-filled pay links. Hootline never moves money: these open the parent's own app. */
+/* Pre-filled pay links. FamGenie never moves money: these open the parent's own app. */
 export function payLink(method, handle, cents, note) {
   const h = String(handle || '').trim();
   if (!h) return '';
@@ -171,3 +171,150 @@ export function tally(entries, kids, month) {
   for (const id in out) out[id].left = out[id].budget ? out[id].budget - out[id].spent : null;
   return out;
 }
+
+/* ---------- Time zones and schedules ---------- */
+export const DEFAULT_TZ = 'America/Chicago';
+const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const partsFmt = new Map();
+/* Wall-clock parts of an instant in a time zone. */
+export function tzParts(ms, tz = DEFAULT_TZ) {
+  let f = partsFmt.get(tz);
+  if (!f) {
+    f = new Intl.DateTimeFormat('en-US', {timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', weekday: 'short'});
+    partsFmt.set(tz, f);
+  }
+  const p = Object.fromEntries(f.formatToParts(new Date(ms)).map((x) => [x.type, x.value]));
+  return {y: +p.year, m: +p.month, d: +p.day, h: +p.hour % 24, mi: +p.minute, wd: WD.indexOf(p.weekday)};
+}
+/* The instant when the wall clock in tz reads y-m-d h:mi. */
+export function zonedToUtc(y, m, d, h, mi, tz = DEFAULT_TZ) {
+  const want = Date.UTC(y, m - 1, d, h, mi);
+  let guess = want;
+  for (let i = 0; i < 3; i++) {
+    const p = tzParts(guess, tz);
+    const diff = Date.UTC(p.y, p.m - 1, p.d, p.h, p.mi) - want;
+    if (!diff) break;
+    guess -= diff;
+  }
+  return guess;
+}
+export const validTz = (tz) => { try { new Intl.DateTimeFormat('en-US', {timeZone: tz}); return true; } catch (e) { return false; } };
+const hm = (s) => { const m = /^(\d{1,2}):(\d{2})$/.exec(s || ''); return m && +m[1] < 24 && +m[2] < 60 ? [+m[1], +m[2]] : null; };
+
+/* Weekly activities ({kidIds, title, days:[0-6], start:'16:30', end:'18:00', placeId}) → dated events in a window. */
+export function expandSchedule(schedule, fromMs, toMs, tz = DEFAULT_TZ) {
+  const out = [];
+  const first = tzParts(fromMs, tz);
+  const days = Math.min(62, Math.ceil((toMs - fromMs) / 864e5) + 2);
+  for (let i = -1; i < days; i++) {
+    const dt = new Date(Date.UTC(first.y, first.m - 1, first.d + i));
+    const [y, m, d, wd] = [dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate(), dt.getUTCDay()];
+    for (const s of schedule || []) {
+      const a = hm(s.start), b = hm(s.end);
+      if (!a || !b || !(s.days || []).includes(wd)) continue;
+      const start = zonedToUtc(y, m, d, a[0], a[1], tz);
+      let end = zonedToUtc(y, m, d, b[0], b[1], tz);
+      if (end <= start) end = start + 60 * 60e3;
+      if (end > fromMs && start < toMs) out.push({id: `${s.id}:${y}-${m}-${d}`, kidIds: s.kidIds || [], title: s.title, start, end, allDay: false, placeId: s.placeId || '', location: '', source: 'schedule'});
+    }
+  }
+  return out.sort((x, y) => x.start - y.start);
+}
+
+/* Where should this child be now, and do we know they're there? */
+export function kidExpectation(kidId, events, signals, now = Date.now()) {
+  const mine = events.filter((e) => !e.allDay && e.kidIds.includes(kidId));
+  const current = mine.filter((e) => e.start <= now && now < e.end).sort((a, b) => b.start - a.start)[0];
+  if (current) {
+    const since = current.start - 30 * 60e3;
+    const seen = signals.filter((s) => s.kidId === kidId && s.at >= since && s.confidence !== 'pending' && s.confidence !== 'declined');
+    const atPlace = current.placeId ? seen.find((s) => s.placeId === current.placeId) : null;
+    const said = seen.find((s) => (s.confidence === 'self' || s.confidence === 'parent') && !s.placeId);
+    const elsewhere = current.placeId ? seen.find((s) => s.placeId && s.placeId !== current.placeId && s.at >= current.start) : null;
+    if (atPlace || said) return {state: 'confirmed', event: current, signal: atPlace || said};
+    if (elsewhere) return {state: 'elsewhere', event: current, signal: elsewhere};
+    if (now - current.start > 10 * 60e3) return {state: 'late', event: current};
+    return {state: 'due', event: current};
+  }
+  const next = mine.filter((e) => e.start > now && e.start - now < 3 * 3600e3).sort((a, b) => a.start - b.start)[0];
+  return next ? {state: 'upcoming', event: next} : {state: null};
+}
+
+/* Two kids who need to be in different places at the same time (someone has to drive). */
+export function findConflicts(events, kids, fromMs, toMs) {
+  const young = new Set(kids.filter((k) => (ageOf(k.birthday) ?? 10) < 16).map((k) => k.id));
+  // School days are routine (bus, carpool), so they don't count as a conflict to solve.
+  const ev = events.filter((e) => !e.allDay && e.placeId && !/\bschool\b/i.test(e.title) && e.start < toMs && e.end > fromMs && e.kidIds.some((id) => young.has(id)))
+    .sort((a, b) => a.start - b.start);
+  const out = [];
+  for (let i = 0; i < ev.length; i++) {
+    for (let j = i + 1; j < ev.length && ev[j].start < ev[i].end; j++) {
+      const a = ev[i], b = ev[j];
+      if (a.placeId === b.placeId) continue;
+      if (a.kidIds.some((id) => b.kidIds.includes(id))) continue;
+      if (Math.abs(a.start - b.start) > 45 * 60e3 && Math.abs(a.end - b.end) > 45 * 60e3) continue;
+      out.push({a, b, at: Math.max(a.start, b.start)});
+    }
+  }
+  return out;
+}
+
+/* ---------- Inbox threads ---------- */
+export function threadKey(m, family) {
+  if (m.threadId) return m.threadId;
+  const p = m.phone;
+  const kid = family.kids.find((k) => k.phone && k.phone === p);
+  if (kid) return 'k-' + kid.id;
+  for (const c of family.contacts) {
+    if (c.phone && c.phone === p) return 'c-' + c.id;
+    if (c.kind === 'group' && (c.members || []).some((x) => x.phone === p)) return 'c-' + c.id;
+  }
+  return 'u-' + String(p || '').replace(/\D/g, '');
+}
+
+/* ---------- The brief: what needs a parent right now (rules; the AI only words it) ---------- */
+const clock = (ms, tz) => { const p = tzParts(ms, tz); return `${((p.h + 11) % 12) + 1}:${String(p.mi).padStart(2, '0')}${p.h < 12 ? 'am' : 'pm'}`; };
+export function ruleBrief({family, signals = [], events = [], money = [], messages = [], mail = [], checkins = [], now = Date.now()}) {
+  const tz = family.timezone || DEFAULT_TZ;
+  const items = [];
+  const kidName = (id) => family.kids.find((k) => k.id === id)?.name || '';
+  const place = (id) => family.places.find((p) => p.id === id)?.name || '';
+  for (const k of family.kids) {
+    const recent = signals.filter((s) => s.kidId === k.id && now - s.at < 6 * 3600e3).sort((a, b) => b.at - a.at)[0];
+    if (recent?.confidence === 'help') { items.push({p: 0, kind: 'help', kidId: k.id, text: `${k.name} asked for help: ${recent.text.toLowerCase()}.`, action: {type: 'checkin', id: k.id}}); continue; }
+    const ex = kidExpectation(k.id, events, signals, now);
+    const where = ex.event ? (place(ex.event.placeId) || ex.event.title) : '';
+    if (ex.state === 'late') items.push({p: 1, kind: 'late', kidId: k.id, text: `${k.name} isn’t confirmed at ${where} (${ex.event.title}, started ${clock(ex.event.start, tz)}).`, action: {type: 'checkin', id: k.id}});
+    if (ex.state === 'elsewhere') items.push({p: 1, kind: 'late', kidId: k.id, text: `${k.name} should be at ${where} but was last seen ${ex.signal.text.replace(/^At /, 'at ').replace(/^Seen at /, 'at ')}.`, action: {type: 'checkin', id: k.id}});
+    const open = checkins.find((c) => c.kidId === k.id && !c.usedAt && c.expiresAt > now);
+    if (open && ex.state !== 'late') items.push({p: 3, kind: 'waiting', kidId: k.id, text: `Waiting on ${k.name}’s check-in.`, action: {type: 'kid', id: k.id}});
+  }
+  for (const r of money.filter((m) => m.kind === 'request' && m.status === 'pending')) {
+    items.push({p: 2, kind: 'money', kidId: r.kidId, text: `${kidName(r.kidId)} asked for ${fmtMoney(r.amountCents)}${r.payee ? ' to ' + r.payee : ''} (${r.category}).`, action: {type: 'pay', id: r.id}});
+  }
+  const dayEnd = now + 36 * 3600e3;
+  for (const c of findConflicts(events, family.kids, now, dayEnd).slice(0, 2)) {
+    items.push({p: 2, kind: 'conflict', text: `${kidName(c.a.kidIds[0])}’s ${c.a.title} and ${kidName(c.b.kidIds[0])}’s ${c.b.title} overlap ${sameDay(c.at, now, tz) ? 'today' : 'tomorrow'} at ${clock(c.at, tz)}, in different places. Who’s driving?`, action: {type: 'schedule'}});
+  }
+  const byThread = new Map();
+  for (const m of messages) byThread.set(threadKey(m, family), m);
+  for (const [tid, last] of byThread) {
+    if (last.dir !== 'in' || now - last.at > 48 * 3600e3) continue;
+    const c = tid.startsWith('c-') ? family.contacts.find((x) => x.id === tid.slice(2)) : null;
+    if (tid.startsWith('u-') || (c && !c.allow)) continue;
+    const who = c ? c.name : kidName(tid.slice(2));
+    items.push({p: 4, kind: 'reply', text: `${who} is waiting on a reply: “${last.body.slice(0, 70)}${last.body.length > 70 ? '…' : ''}”`, action: {type: 'thread', id: tid}});
+  }
+  for (const m of mail.filter((x) => !x.done).slice(0, 3)) {
+    items.push({p: 4, kind: 'mail', kidId: m.kidId, text: m.task ? `${m.task}${m.due ? ` (by ${m.due})` : ''}. From ${m.fromName || 'school email'}.` : `School email from ${m.fromName || m.from}: “${m.subject}”`, action: {type: 'mail', id: m.id}});
+  }
+  const held = [...byThread.entries()].filter(([tid]) => {
+    const c = tid.startsWith('c-') ? family.contacts.find((x) => x.id === tid.slice(2)) : null;
+    return tid.startsWith('u-') || (c && !c.allow);
+  }).length;
+  if (held) items.push({p: 5, kind: 'held', text: `${held} message${held > 1 ? 's' : ''} held from people you haven’t allowed.`, action: {type: 'held'}});
+  const upcoming = events.filter((e) => !e.allDay && e.start > now && e.start < now + 4 * 3600e3).sort((a, b) => a.start - b.start).slice(0, 3);
+  for (const e of upcoming) items.push({p: 6, kind: 'next', text: `${clock(e.start, tz)} · ${e.kidIds.map(kidName).filter(Boolean).join(' & ') || 'Family'}: ${e.title}${place(e.placeId) ? ' at ' + place(e.placeId) : ''}.`, action: {type: 'schedule'}});
+  return items.sort((a, b) => a.p - b.p);
+}
+function sameDay(a, b, tz) { const x = tzParts(a, tz), y = tzParts(b, tz); return x.y === y.y && x.m === y.m && x.d === y.d; }

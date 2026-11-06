@@ -7,6 +7,9 @@ Your family's AI assistant. FamGenie keeps busy parents on top of where their ki
 - **Know they got there.** Each child's status comes from whichever signals the family turns on: a one-time check-in link (one location reading, only when the child taps), a "reply 1 or 2" text that works on basic phones, the child's own kid page, iPhone Shortcuts or Android automations on arrive/leave, school attendance, and parent-confirmed sightings from AirTag/SmartTag/Tile or kids' GPS watches. Options are filtered by age and device; at 18+ sharing is the young adult's choice.
 - **One inbox for everyone.** Tutors, teachers, coaches, sitters and school parent groups text one family number. Parents choose who can reach them (others wait in Held), and mark groups that only use ClassDojo, Remind, GroupMe or WhatsApp so FamGenie opens that app instead.
 - **Kids ask, parents approve.** A child asks from their kid page or by texting `PAY 40 Priya tutoring`. The parent gets a text, approves, and pays in their own Venmo, PayPal or Cash App (amount pre-filled), Zelle (details to copy), the child's card app, or cash, then marks it paid. Monthly budgets, card top-ups, allowances and a per-category tally keep spending visible. **FamGenie never holds or moves money.**
+- **An AI genie.** A morning brief that puts what needs you first (late kids, money requests, conflicts between kids' activities, unanswered texts, school-email to-dos), written up by Claude; **Ask FamGenie** questions answered from your own family data; one-tap drafted replies to tutors and teachers. Rules decide what matters; the AI only words it and every action needs a tap.
+- **Schedules and late alerts.** Weekly activities ("Soccer, Tue & Thu 4:30–6 at field 3"), school and team calendar links (iCal/webcal), and Google Calendar give each child a "where they should be" plan. FamGenie flags overlapping activities in different places and texts the parent once if a child isn't confirmed 10 minutes after something starts.
+- **School email to to-dos.** With Gmail connected (read-only), emails from teachers and the school (field trips, forms, conferences) become to-dos with due dates.
 - **Profiles with photos.** Parents set up each child (photo, birthday, school, grade, phone type, budget, card) and the people around them (role, which kids, phone, email, payment handles).
 
 ## How it works
@@ -30,7 +33,11 @@ functions/                API handlers (Pages Functions format, also used by the
   k/[token].js            a child's private page: check in, ask for money, see requests
   hooks/sms.js            Twilio inbound texts: replies, PAY requests, inbox
   hooks/arrive/[token].js phone automations (arrive / leave a saved place)
-lib/                      server helpers: D1, sessions, Twilio, kid pages
+  api/brief.js            what needs the parent now, plus the AI summary
+  api/ai/ask.js, draft.js Ask FamGenie; drafted replies
+  api/calendars/sync.js   refresh calendar links and Google now
+  api/google/*            connect, callback, disconnect (read-only Calendar + Gmail)
+lib/                      server helpers: D1, sessions, Twilio, kid pages, iCal reader, Google, Claude, scheduler
 ```
 
 Data lives in Cloudflare D1 (tables are created on first use). Location readings and check-ins are deleted after 30 days (`RETENTION_DAYS`).

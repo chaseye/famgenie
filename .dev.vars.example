@@ -10,7 +10,17 @@ TWILIO_ACCOUNT_SID=ACxxx
 TWILIO_AUTH_TOKEN=xxx
 TWILIO_FROM=+13125550100
 # The public address Twilio calls, used to check Twilio's signature (no trailing slash)
-PUBLIC_URL=https://famgenie.pages.dev
+PUBLIC_URL=https://famgenie.chase-51e.workers.dev
+
+# AI (Claude): brief, Ask, drafted replies
+ANTHROPIC_API_KEY=sk-ant-xxx
+# AI_MODEL=claude-haiku-5-5
+
+# Google Calendar + Gmail (read-only)
+GOOGLE_CLIENT_ID=xxx.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=xxx
+# Long random string that encrypts stored Google tokens (openssl rand -base64 32). Never change it later.
+TOKEN_KEY=xxx
 
 # How many days to keep location readings and check-ins (default 30)
 # RETENTION_DAYS=30
