@@ -18,7 +18,7 @@ export async function onRequestGet({params, env}) {
   const family = await loadFamily(DB, c.family_id);
   const kid = family?.kids.find((k) => k.id === c.kid_id);
   if (!kid) return htmlRes(gone(), 410);
-  return htmlRes(checkinPage({token: params.token, kidName: kid.name, asker: askerLabel(family), reason: c.reason, expiresAt: c.expires_at}));
+  return htmlRes(checkinPage({token: params.token, kidName: kid.name, asker: askerLabel(family), reason: c.reason, expiresAt: c.expires_at, tz: family.timezone}));
 }
 
 export async function onRequestPost({params, request, env}) {

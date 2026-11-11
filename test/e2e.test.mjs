@@ -156,6 +156,7 @@ try {
   const r2 = await sms(kidPhone, '+13125550142', 'PAY 40 Priya tutoring Thursday');
   assert.match(r2.text, /Asked Mom for \$40\.00 to Priya Shah \(Tutoring\)/);
   await waitLog(/\[dev sms\] to=\+13125550100\nMaya asked for \$40\.00/, at);
+  await waitLog(/Maya asked for \$40\.00 to Priya Shah \(Tutoring\): Priya tutoring Thursday\. After this: \$110\.00 left of \$150\.00 this month\. Open FamGenie/, at);
 
   // Inbox: contact, group member, held contact, unknown number.
   await sms(kidPhone, '+13125550164', 'Running 5 minutes late today.');
@@ -193,6 +194,12 @@ try {
   await waitLog(/Mom approved \$40\.00 for Priya Shah/, at);
   assert.equal((await parent('/api/money', {method: 'POST', json: {op: 'paid', id: tutor.id, method: 'venmo'}})).j.status, 'paid');
   assert.equal((await parent('/api/money', {method: 'POST', json: {op: 'paid', id: tutor.id}})).status, 409, 'cannot pay twice');
+  // The kid page and the parent's text both count what was paid this month.
+  assert.match((await kidPhone(`/k/${maya.hubToken}`)).text, /Left this month: <strong>\$110\.00<\/strong>/);
+  at = logs.length;
+  const big = await kidPhone(`/k/${maya.hubToken}`, {method: 'POST', json: {action: 'ask', amount: '120', category: 'Clothes', payee: 'Winter coat'}});
+  assert.equal(big.status, 200, JSON.stringify(big.j));
+  await waitLog(/Maya asked for \$120\.00 to Winter coat \(Clothes\)\. This would be \$10\.00 over this month's \$150\.00 budget\. Open FamGenie/, at);
   const lunch = reqs.find((m) => m.payee === 'Lunch');
   assert.equal((await parent('/api/money', {method: 'POST', json: {op: 'decline', id: lunch.id, note: 'Pack one tomorrow'}})).j.status, 'declined');
   const top = (await parent('/api/money', {method: 'POST', json: {op: 'record', kidId: maya.id, kind: 'topup', amount: '25', method: 'card'}})).j;

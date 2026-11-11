@@ -3,7 +3,7 @@ import {db, jsonRes, htmlRes, loadFamily, askerLabel, addSignal, allow, moneyRow
 import {kidForToken} from '../../lib/family.js';
 import {hubPage, notice} from '../../lib/pages.js';
 import {recordLocation, createMoneyRequest} from '../../lib/kid.js';
-import {tally, monthKey} from '../../public/assets/shared.js';
+import {tally, monthKey, DEFAULT_TZ} from '../../public/assets/shared.js';
 
 async function load(env, token) {
   const DB = await db(env);
@@ -20,7 +20,8 @@ export async function onRequestGet({params, env}) {
   const {DB, family, kid, familyId} = await load(env, params.token);
   if (!kid) return htmlRes(off(), 404);
   const rows = (await DB.prepare('SELECT * FROM money WHERE family_id = ? AND kid_id = ? ORDER BY created_at DESC LIMIT 60').bind(familyId, kid.id).all()).results.map(moneyRow);
-  const t = tally(rows, [kid], monthKey(Date.now()))[kid.id];
+  const tz = family.timezone || DEFAULT_TZ;
+  const t = tally(rows, [kid], monthKey(Date.now(), tz), tz)[kid.id];
   const payees = family.contacts.filter((c) => c.kind !== 'group' && c.kidIds.includes(kid.id));
   return htmlRes(hubPage({token: params.token, kid, asker: askerLabel(family), payees, left: t.left, budget: t.budget,
     recent: rows.filter((r) => r.kind === 'request').slice(0, 8)}));
