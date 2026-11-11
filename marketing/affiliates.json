@@ -1,0 +1,79 @@
+{
+  "_about": "FamGenie's affiliate and sponsor registry. Terms were read from each source page on checkedOn; re-check before applying. 'status' is the owner's sign-up state: only the owner can apply (it needs their identity, tax form and bank details). Placements are parent-facing only: never on the kid pages (/c/, /k/) or in texts to children. Usage assumptions are planning guesses, not measurements; replace them with real numbers from marketing/results.md once links are live.",
+  "checkedOn": "2026-11-11",
+  "programs": [
+    {
+      "id": "greenlight", "name": "Greenlight", "category": "Kids' debit card",
+      "payout": {"kind": "perLead", "usd": 52}, "cookieDays": 30, "network": "FlexOffers listing (not currently offered there); apply direct",
+      "source": "https://www.flexoffers.com/affiliate-programs/greenlight-affiliate-program",
+      "placement": "Money screen: 'Want a card for allowances? FamGenie works with the apps you already use.'",
+      "assume": {"clickRate": 0.010, "convRate": 0.10},
+      "status": "not applied", "fit": "ok", "note": "FamGenie still never holds or moves money; this is a link out only. Confirm the payout when applying."
+    },
+    {
+      "id": "varsity-tutors", "name": "Varsity Tutors", "category": "Tutoring",
+      "payout": {"kind": "percent", "rate": 0.16, "assumedOrderUsd": 150}, "cookieDays": 30, "network": "FlexOffers listing (not currently offered there); apply direct",
+      "source": "https://www.flexoffers.com/affiliate-programs/varsity-tutors-affiliate-program",
+      "placement": "Family inbox, under a tutor thread: 'Need another tutor?'",
+      "assume": {"clickRate": 0.010, "convRate": 0.03},
+      "status": "not applied", "fit": "ok", "note": "assumedOrderUsd is a guess; set it from the first real reports."
+    },
+    {
+      "id": "outschool", "name": "Outschool", "category": "Online classes",
+      "payout": {"kind": "percent", "rate": 0.10, "assumedOrderUsd": 60}, "cookieDays": 30, "network": "Awin",
+      "source": "https://ui.awin.com/merchant-profile/18973",
+      "placement": "Schedules: 'Find a class for this week's free afternoon'",
+      "assume": {"clickRate": 0.015, "convRate": 0.05},
+      "status": "not applied", "fit": "ok", "note": "Awin says 'up to 20%'; the plan uses 10% to stay conservative."
+    },
+    {
+      "id": "kiwico", "name": "KiwiCo", "category": "Kids' activity kits",
+      "payout": {"kind": "perSale", "usd": 20}, "cookieDays": 30, "network": "CJ",
+      "source": "https://kiwico.com/affiliate-program",
+      "placement": "AI brief, weekend ideas (labeled 'Sponsored link')",
+      "assume": {"clickRate": 0.010, "convRate": 0.04},
+      "status": "not applied", "fit": "ok", "note": "$20 is the top rate for a renewing subscription on a content site; store orders pay 10%."
+    },
+    {
+      "id": "care-com", "name": "Care.com", "category": "Babysitters and care",
+      "payout": {"kind": "perSale", "usd": 16, "extraPerLeadUsd": 0.80, "extraLeadRate": 0.15}, "cookieDays": 30, "network": "direct (see source)",
+      "source": "https://www.flexoffers.com/affiliate-programs/care-com-affiliate-program",
+      "placement": "Late-alert screen: 'Need a backup sitter?'",
+      "assume": {"clickRate": 0.010, "convRate": 0.03},
+      "status": "not applied", "fit": "ok", "note": "$16 per premium subscription, $0.80 per free sign-up."
+    },
+    {
+      "id": "gabb", "name": "Gabb Wireless", "category": "Kid-safe phones",
+      "payout": {"kind": "percent", "rate": 0.13, "assumedOrderUsd": 150}, "cookieDays": 30, "network": "Awin",
+      "source": "https://ui.awin.com/merchant-profile/130413",
+      "placement": "Family screen when a child has no phone number yet",
+      "assume": {"clickRate": 0.005, "convRate": 0.03},
+      "status": "not applied", "fit": "ok", "note": "13% is the bottom of the 13 to 30% tier."
+    },
+    {
+      "id": "amazon", "name": "Amazon Associates", "category": "School supplies, books, gifts",
+      "payout": {"kind": "percent", "rate": 0.035, "assumedOrderUsd": 40}, "cookieDays": null, "network": "Amazon",
+      "source": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "placement": "Schedules: supply lists and birthday-gift picks",
+      "assume": {"clickRate": 0.030, "convRate": 0.08},
+      "status": "not applied", "fit": "ok", "note": "Toys and baby 3%, books 4.5%; 3.5% is a blend. The rate page does not state the cookie window; check the operating agreement."
+    },
+    {
+      "id": "bark", "name": "Bark (bark.us)", "category": "Phone monitoring",
+      "payout": {"kind": "percent", "rate": 0.15, "assumedOrderUsd": 99}, "cookieDays": 14, "network": "Lasso",
+      "source": "https://getlasso.co/affiliate/bark-parental-controls-for-families/",
+      "placement": "none",
+      "assume": {"clickRate": 0, "convRate": 0},
+      "status": "excluded", "fit": "conflict", "note": "Bark reads children's messages. That conflicts with FamGenie's no-covert-tracking rule and brand.json's forbidden 'read their messages'. The owner decides."
+    }
+  ],
+  "sponsors": {
+    "_about": "One sponsor card per screen at most, parent-facing, labeled 'Sponsored'. Sold flat per month; nothing is counted in the income model until a deal is signed.",
+    "slots": [
+      {"id": "brief-card", "where": "Weekly AI brief, bottom card", "rule": "Contextual by topic only (for example back-to-school), never by a child's data"},
+      {"id": "settings-partner", "where": "Settings > Partners page", "rule": "List of partner offers with the affiliate disclosure"},
+      {"id": "site-footer", "where": "Marketing website footer and blog", "rule": "No ad scripts; a static image and a /go link"}
+    ],
+    "deals": []
+  }
+}

@@ -1,0 +1,24 @@
+name: Privacy guard
+# Weekly and on every change: fail if kids' data could reach an ad network, tracker, partner or the AI,
+# and report known security advisories in dependencies. The same checks also run inside `npm test`.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '17 11 * * 1' # Mondays, 5:17am Central
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/privacy-guard.mjs
+      - run: npm ci
+      - name: Dependency advisories (high and critical)
+        run: npm audit --audit-level=high
