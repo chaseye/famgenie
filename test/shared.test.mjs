@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {normPhone, ageOf, methodBlocked, defaultMethods, METHODS, matchPlace, toCents, fmtMoney, parseMoneyText, guessRequest, payLink, tally} from '../public/assets/shared.js';
+import {normPhone, ageOf, methodBlocked, defaultMethods, METHODS, matchPlace, toCents, fmtMoney, parseMoneyText, guessRequest, payLink, tally, monthKey, budgetAfter} from '../public/assets/shared.js';
 
 const m = (id) => METHODS.find((x) => x.id === id);
 const y = new Date().getFullYear();
@@ -63,4 +63,21 @@ const t = tally([
 ], kids, '2026-11');
 assert.deepEqual(t.k1, {spent: 5000, topups: 2000, pending: 2500, pendingCount: 1, budget: 15000, byCategory: {Tutoring: 4000, Food: 1000}, left: 10000});
 assert.equal(t.k2.left, null);
+
+// Months follow the family's time zone: 7pm on Oct 31 in Chicago is already Nov 1 in UTC.
+const halloweenEvening = Date.UTC(2026, 10, 1, 0, 0); // Oct 31, 7:00pm CDT
+assert.equal(monthKey(halloweenEvening), '2026-11', 'without a time zone it stays UTC, as before');
+assert.equal(monthKey(halloweenEvening, 'America/Chicago'), '2026-10');
+assert.equal(monthKey(Date.UTC(2026, 11, 1, 5, 30), 'America/Los_Angeles'), '2026-11');
+assert.equal(monthKey(Date.UTC(2026, 11, 1, 5, 30), 'America/New_York'), '2026-12');
+const late = [{kidId: 'k1', kind: 'payment', status: 'paid', amountCents: 3000, category: 'Food', paidAt: halloweenEvening}];
+assert.equal(tally(late, kids, '2026-10', 'America/Chicago').k1.spent, 3000, 'counted in October for a Chicago family');
+assert.equal(tally(late, kids, '2026-11', 'America/Chicago').k1.spent, 0, 'and not in November');
+
+// The budget line in the parent's text matches the app's "After this".
+assert.equal(budgetAfter(t.k1, 4000), 'After this: $60.00 left of $150.00 this month.');
+assert.equal(budgetAfter(t.k1, 10000), 'After this: $0.00 left of $150.00 this month.');
+assert.equal(budgetAfter(t.k1, 12500), "This would be $25.00 over this month's $150.00 budget.");
+assert.equal(budgetAfter(t.k2, 500), '', 'no budget, no line');
+assert.equal(budgetAfter(undefined, 500), '');
 console.log('shared: all tests passed');

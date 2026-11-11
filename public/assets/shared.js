@@ -117,7 +117,13 @@ export function toCents(v) {
   const n = Number(String(v ?? '').replace(/[$,\s]/g, ''));
   return Number.isFinite(n) && n > 0 && n < 100000 ? Math.round(n * 100) : 0;
 }
-export const monthKey = (ts) => new Date(ts).toISOString().slice(0, 7);
+/* "2026-11" for an instant. Pass the family's time zone so a payment on the evening of the 31st counts in that month
+ * (without tz it uses UTC, as before). */
+export function monthKey(ts, tz) {
+  if (!tz) return new Date(ts).toISOString().slice(0, 7);
+  const p = tzParts(ts, tz);
+  return `${p.y}-${String(p.m).padStart(2, '0')}`;
+}
 
 /* A kid's text like "PAY 40 Priya tutoring" or "need $25 for field trip". */
 export function parseMoneyText(body) {
@@ -154,7 +160,7 @@ export function payLink(method, handle, cents, note) {
 }
 
 /* Month summary per child: what was spent, topped up, waiting, and left in the budget. */
-export function tally(entries, kids, month) {
+export function tally(entries, kids, month, tz) {
   const out = {};
   for (const k of kids) out[k.id] = {spent: 0, topups: 0, pending: 0, pendingCount: 0, budget: k.monthlyBudget || 0, byCategory: {}};
   for (const e of entries) {
@@ -164,12 +170,21 @@ export function tally(entries, kids, month) {
       if (e.kind === 'request') { t.pending += e.amountCents; t.pendingCount++; }
       continue;
     }
-    if (e.status !== 'paid' || monthKey(e.paidAt || e.createdAt) !== month) continue;
+    if (e.status !== 'paid' || monthKey(e.paidAt || e.createdAt, tz) !== month) continue;
     if (e.kind === 'topup' || e.kind === 'allowance') t.topups += e.amountCents;
     else { t.spent += e.amountCents; t.byCategory[e.category || 'Other'] = (t.byCategory[e.category || 'Other'] || 0) + e.amountCents; }
   }
   for (const id in out) out[id].left = out[id].budget ? out[id].budget - out[id].spent : null;
   return out;
+}
+
+/* One line on what a request would do to this month's budget (same math as "After this" in the app).
+ * t is one child's tally; '' when the child has no budget. */
+export function budgetAfter(t, cents) {
+  if (!t?.budget) return '';
+  const after = t.left - cents;
+  return after >= 0 ? `After this: ${fmtMoney(after)} left of ${fmtMoney(t.budget)} this month.`
+    : `This would be ${fmtMoney(-after)} over this month's ${fmtMoney(t.budget)} budget.`; // plain ' keeps texts in one SMS encoding
 }
 
 /* ---------- Time zones and schedules ---------- */

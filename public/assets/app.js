@@ -589,13 +589,13 @@ function threadView(tid) {
 
 /* ---------- money ---------- */
 function moneyView() {
-  const month = monthKey(Date.now());
-  const t = tally(D.money, D.family.kids, month);
+  const month = monthKey(Date.now(), tz());
+  const t = tally(D.money, D.family.kids, month, tz());
   const kidsShown = ui.moneyKid === 'all' ? D.family.kids : D.family.kids.filter((k) => k.id === ui.moneyKid);
   const spent = kidsShown.reduce((s, k) => s + t[k.id].spent, 0);
   const funded = kidsShown.reduce((s, k) => s + t[k.id].topups, 0);
   const pending = D.money.filter((m) => m.kind === 'request' && (m.status === 'pending' || m.status === 'approved') && kidsShown.some((k) => k.id === m.kidId));
-  const activity = D.money.filter((m) => m.status !== 'pending' && m.status !== 'approved' && monthKey(m.paidAt || m.decidedAt || m.createdAt) === month && kidsShown.some((k) => k.id === m.kidId))
+  const activity = D.money.filter((m) => m.status !== 'pending' && m.status !== 'approved' && monthKey(m.paidAt || m.decidedAt || m.createdAt, tz()) === month && kidsShown.some((k) => k.id === m.kidId))
     .sort((a, b) => (b.paidAt || b.decidedAt || b.createdAt) - (a.paidAt || a.decidedAt || a.createdAt));
   const cats = {};
   for (const k of kidsShown) for (const [c, v] of Object.entries(t[k.id].byCategory)) cats[c] = (cats[c] || 0) + v;
@@ -620,7 +620,7 @@ function moneyView() {
 }
 function requestCard(m) {
   const k = kidById(m.kidId);
-  const t = tally(D.money, D.family.kids, monthKey(Date.now()))[m.kidId];
+  const t = tally(D.money, D.family.kids, monthKey(Date.now(), tz()), tz())[m.kidId];
   const after = t?.budget ? t.left - m.amountCents : null;
   return `<article class="card req"><div class="kid-top">${avatar(k, 40)}<div style="flex:1;min-width:0"><b>${esc(k?.name || '')}</b> <span class="muted small">${m.source === 'kid-text' ? 'by text' : m.source === 'kid-page' ? 'from their page' : ''} · ${fmtTime(m.createdAt)}</span>
       <div class="amt">${fmtMoney(m.amountCents)}${m.payee ? ` <span class="muted" style="font-size:15px;font-weight:600">to ${esc(m.payee)}</span>` : ''}</div></div>${m.status === 'approved' ? '<span class="badge gold">Approved</span>' : ''}</div>
@@ -656,7 +656,7 @@ function kidView(id) {
   const k = kidById(id);
   if (!k) return {bar: backBar('Child', 'family'), html: '<p class="empty">This child isn’t in your family.</p>'};
   const st = kidStatus(k);
-  const t = tally(D.money, D.family.kids, monthKey(Date.now()))[k.id];
+  const t = tally(D.money, D.family.kids, monthKey(Date.now(), tz()), tz())[k.id];
   const cs = D.family.contacts.filter((c) => c.kidIds.includes(k.id));
   const sig = D.signals.filter((s) => s.kidId === k.id).sort((a, b) => b.at - a.at).slice(0, 6);
   const origin = location.origin;
@@ -837,7 +837,7 @@ const SHEETS = {
   },
   kidPage({kidId}) {
     const k = kidById(kidId) || D.family.kids[0]; const d = ui.draft;
-    const t = tally(D.money, D.family.kids, monthKey(Date.now()))[k.id];
+    const t = tally(D.money, D.family.kids, monthKey(Date.now(), tz()), tz())[k.id];
     const payees = D.family.contacts.filter((c) => c.kind !== 'group' && c.kidIds.includes(k.id));
     return {title: `${k.name}’s page (demo)`, html: `<p class="small muted">This is what ${esc(k.name)} sees at their private link.</p><div class="phonebox"><div class="scr">
       <b style="font-size:17px">Hi ${esc(k.name)}</b>
