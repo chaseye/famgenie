@@ -5,14 +5,16 @@
   "scripts": {
     "dev": "npx wrangler dev",
     "dev:pages": "npx wrangler pages dev public --compatibility-date=2026-10-01 --d1 DB=famgenie",
-    "test": "node test/shared.test.mjs && node test/sms.test.mjs && node test/ics.test.mjs && node test/google.test.mjs && node test/marketing.test.mjs",
+    "test": "node test/shared.test.mjs && node test/sms.test.mjs && node test/ics.test.mjs && node test/google.test.mjs && node test/marketing.test.mjs && node test/monetize.test.mjs && node test/privacy.test.mjs",
     "test:e2e": "node test/e2e.test.mjs",
     "test:e2e:pages": "E2E_MODE=pages node test/e2e.test.mjs",
     "build:demo": "node scripts/build-demo.mjs",
     "growth:screens": "node scripts/marketing/studio.mjs screens",
     "growth:new": "node scripts/marketing/studio.mjs new",
     "growth:lint": "node scripts/marketing/studio.mjs lint",
-    "growth:build": "node scripts/marketing/studio.mjs build"
+    "growth:build": "node scripts/marketing/studio.mjs build",
+    "privacy:guard": "node scripts/privacy-guard.mjs",
+    "monetize:income": "node scripts/monetize/income.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.158.0"
