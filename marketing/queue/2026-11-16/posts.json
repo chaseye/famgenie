@@ -1,0 +1,118 @@
+{
+  "week": "2026-11-16",
+  "theme": "Holiday week, one plan",
+  "app": "FamGenie",
+  "url": "https://famgenie.chase-51e.workers.dev",
+  "posts": [
+    {
+      "id": "fb-holiday-plan",
+      "channel": "facebook",
+      "when": "2026-11-16T19:30:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "The week before Thanksgiving is when every calendar fills up at once: a half day here, a day off there, an extra practice, a school concert.\n\nFamGenie puts it all in one plan for each kid. Add their weekly activities, paste the school or team calendar link (most offer one under \"Subscribe\" or \"Add to calendar\"), or connect Google Calendar. Then the Today view shows where everyone should be.\n\nFree to start. https://famgenie.chase-51e.workers.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-16-holiday-week-one-plan&utm_content=fb-holiday-plan",
+      "image": "ads/holiday-week-portrait.jpg",
+      "publicImage": "/m/2026-11-16/holiday-week-portrait.jpg"
+    },
+    {
+      "id": "fb-two-places",
+      "channel": "facebook",
+      "when": "2026-11-18T12:15:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Wednesday, 4:30. One kid at swim across town, the other at a rehearsal on the opposite side. Who's driving?\n\nFamGenie looks at your kids' schedules and flags when two activities overlap in different places, so you sort out the carpool on Sunday night instead of in the car.\n\nhttps://famgenie.chase-51e.workers.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-16-holiday-week-one-plan&utm_content=fb-two-places",
+      "image": "ads/two-places-portrait.jpg",
+      "publicImage": "/m/2026-11-16/two-places-portrait.jpg"
+    },
+    {
+      "id": "fb-one-text",
+      "channel": "facebook",
+      "when": "2026-11-20T19:00:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Holiday weeks mean new places and new times, and that's when a pickup gets missed.\n\nWith late alerts on, FamGenie texts you once if a child hasn't confirmed 10 minutes after something on their schedule starts. Kids confirm with a tap or a quick reply, so you only hear about it when there's something to check. One text, not a stream of pings.\n\nhttps://famgenie.chase-51e.workers.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-16-holiday-week-one-plan&utm_content=fb-one-text",
+      "image": "ads/one-late-text-portrait.jpg",
+      "publicImage": "/m/2026-11-16/one-late-text-portrait.jpg"
+    },
+    {
+      "id": "ig-holiday-plan",
+      "channel": "instagram",
+      "when": "2026-11-17T19:30:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Thanksgiving week calendar check: half days, days off, extra practices, the school concert.\n\nFamGenie gives each kid one plan from their activities, the school or team calendar link, and Google Calendar. Open Today and see where everyone should be.\n\nFree to start. Link in bio.\n\n#thanksgiving #parenting #familycalendar #busyparents #momlife #dadlife",
+      "image": "ads/holiday-week-portrait.jpg",
+      "publicImage": "/m/2026-11-16/holiday-week-portrait.jpg"
+    },
+    {
+      "id": "ig-two-places",
+      "channel": "instagram",
+      "when": "2026-11-19T20:00:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Two kids, two activities, same time, opposite sides of town.\n\nFamGenie spots the overlap in your kids' schedules ahead of time, so the who's-driving conversation happens before the day, not in the parking lot. Link in bio.\n\n#carpool #parenting #momlife #familyorganization #busyparents",
+      "image": "ads/two-places-portrait.jpg",
+      "publicImage": "/m/2026-11-16/two-places-portrait.jpg"
+    },
+    {
+      "id": "ig-ask",
+      "channel": "instagram",
+      "when": "2026-11-21T10:00:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Saturday question: what's on Tuesday, and who needs a ride?\n\nAsk FamGenie answers from your own family's schedules and messages. Rules decide what matters, the AI only puts it into words, and anything it suggests waits for your tap. Link in bio.\n\n#parenting #familyplanning #momlife #dadlife #holidayprep",
+      "image": "ads/ask-genie-portrait.jpg",
+      "publicImage": "/m/2026-11-16/ask-genie-portrait.jpg"
+    },
+    {
+      "id": "li-calendars",
+      "channel": "linkedin",
+      "when": "2026-11-17T08:30:00-06:00",
+      "auto": false,
+      "skip": false,
+      "text": "Building FamGenie, an AI assistant for busy parents, taught me that the hardest scheduling problem in a family isn't one person's calendar. It's two kids who need to be in different places at the same time.\n\nSo FamGenie builds a \"where they should be\" plan for each child from three sources: weekly activities a parent types once, school and team calendar links (iCal/webcal), and Google Calendar (read-only). From that it does two things:\n- flags overlapping activities in different places, so the carpool gets solved ahead of time\n- texts the parent once if a child hasn't confirmed 10 minutes after something starts\n\nThe lesson: the useful version is mostly about what not to say. Ordinary school days don't count as conflicts, a late alert goes out once instead of repeating, and the AI only words what the rules already decided needs a parent.\n\nWith Thanksgiving week coming, calendars are about to get messy. If you're a parent, it's free to start and I'd value your honest feedback: https://famgenie.chase-51e.workers.dev/?utm_source=linkedin&utm_medium=community&utm_campaign=2026-11-16-holiday-week-one-plan&utm_content=li-calendars\n\n#buildinpublic #parenting",
+      "image": "ads/two-places-landscape.jpg",
+      "publicImage": null
+    },
+    {
+      "id": "rd-alphabeta",
+      "channel": "reddit",
+      "when": "2026-11-18T11:30:00-06:00",
+      "auto": false,
+      "skip": false,
+      "title": "Looking for parents to test the schedules part of a family app I made (conflict flags, late texts, school calendar links)",
+      "where": "r/alphaandbetausers",
+      "text": "Full disclosure: I made this. FamGenie is a web app for parents of kids 4 to 22, and I'm looking for testers on one part of it before the holiday rush: family schedules.\n\nWhat I'd like tested:\n- Adding a kid's weekly activities, plus a school or team calendar link (iCal/webcal) or Google Calendar (read-only).\n- The Today view: does it show where each kid should be, correctly?\n- Conflict flags: it should catch two kids with activities in different places at about the same time, and ignore ordinary school days.\n- Late alerts: if a kid hasn't confirmed 10 minutes after an activity starts, you get one text. Kids confirm by tapping a link or replying to a text; there's no background location tracking.\n\nIf you don't want to sign up, the site opens a labeled demo with a sample family, so you can poke at it first.\n\nWhat I'm hoping to learn: which calendar links break, whether the conflict rules miss real-life cases, and whether one late text is the right amount. It's free to start: https://famgenie.chase-51e.workers.dev/?utm_source=reddit&utm_medium=community&utm_campaign=2026-11-16-holiday-week-one-plan&utm_content=rd-alphabeta\n\nHappy to answer anything in the comments.",
+      "image": "ads/holiday-week-landscape.jpg",
+      "publicImage": null
+    },
+    {
+      "id": "tt-holiday",
+      "channel": "tiktok",
+      "when": "2026-11-19T19:00:00-06:00",
+      "auto": false,
+      "skip": false,
+      "script": [
+        "0-2s: on-screen text \"Two kids. Same time. Opposite sides of town.\" over the FamGenie Today view (hook)",
+        "2-6s: screen recording, sample family: scroll Today, the two overlapping activities are flagged as a conflict",
+        "6-10s: Family tab, Schedules: weekly activities plus a pasted school calendar link",
+        "10-13s: Settings: the 'Late alerts by text' toggle, caption: one text if they haven't confirmed 10 min after start",
+        "13-15s: end card: one plan for the holiday week. Free to start, link in bio"
+      ],
+      "text": "Thanksgiving week is coming. Here's how I see every kid's schedule in one place, and catch the two-places-at-once problem before Wednesday. #parentsoftiktok #momtok #dadtok #thanksgiving #familyorganization",
+      "image": "ads/holiday-week-story.jpg",
+      "publicImage": null
+    },
+    {
+      "id": "grp-pto",
+      "channel": "group",
+      "when": "2026-11-21T09:30:00-06:00",
+      "auto": false,
+      "skip": false,
+      "where": "A local parents' Facebook group or school PTO page (message the admin first and only post with their OK)",
+      "text": "Hi all, with the holiday week coming, a quick tip that's helped us: most school and team websites have a calendar link (look for \"Subscribe\", \"iCal\" or \"Add to calendar\"). Adding it to your own calendar means half days and days off show up without retyping them from the newsletter.\n\nFull disclosure, I built a small app called FamGenie that does this for each kid: activities, the school calendar link and Google Calendar in one plan, a heads-up when two kids need to be in different places at the same time, and one text if a kid hasn't checked in after something starts. The admins said it was OK to share. It's free to start, and I'd really like honest feedback from other parents: https://famgenie.chase-51e.workers.dev/?utm_source=group&utm_medium=community&utm_campaign=2026-11-16-holiday-week-one-plan&utm_content=grp-pto",
+      "image": null,
+      "publicImage": null
+    }
+  ]
+}
