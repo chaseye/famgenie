@@ -1,0 +1,135 @@
+{
+  "week": "2026-11-23",
+  "theme": "Home for the break",
+  "app": "FamGenie",
+  "url": "https://famgenie.chase-51e.workers.dev",
+  "posts": [
+    {
+      "id": "fb-home-break",
+      "channel": "facebook",
+      "when": "2026-11-23T19:30:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "This is the week the college kids come home. Flights, buses, long drives, and a parent refreshing the airline app.\n\nIn FamGenie you can send your young adult a check-in on travel day: they tap a one-time link or reply 1 when they've landed. At 18 and up, sharing is their choice. FamGenie asks; they decide whether to answer.\n\nIt also works for the younger ones heading to a cousin's or a friend's for the long weekend.\n\nFree to start. https://famgenie.chase-51e.workers.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-23-home-for-the-break&utm_content=fb-home-break",
+      "image": "ads/home-break-portrait.jpg",
+      "publicImage": "/m/2026-11-23/home-break-portrait.jpg"
+    },
+    {
+      "id": "fb-break-replies",
+      "channel": "facebook",
+      "when": "2026-11-25T12:15:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "\"Are we still on for next Tuesday?\" Break weeks bring a lot of these: the tutor, the piano teacher, the coach, the sitter.\n\nIn FamGenie they all text one family number and land in one inbox. Tap the sparkle and FamGenie drafts a reply for you. You read it, change what you like, and send. Nothing goes out without your tap.\n\nOne less thing to type between pie and the grocery run. https://famgenie.chase-51e.workers.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-23-home-for-the-break&utm_content=fb-break-replies",
+      "image": "ads/break-replies-portrait.jpg",
+      "publicImage": "/m/2026-11-23/break-replies-portrait.jpg"
+    },
+    {
+      "id": "fb-budget",
+      "channel": "facebook",
+      "when": "2026-11-27T19:00:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Black Friday, from the parent side: \"Can I get $60 for the sale?\"\n\nWhen a kid asks in FamGenie, the request shows how much of their monthly budget is left after it, so you can say yes or not this month with the full picture. If you approve, you pay in your own Venmo, PayPal, Cash App, Zelle, their card app or cash. FamGenie never holds or moves money.\n\nA per-category tally shows where the month went, too.\n\nFree to start. https://famgenie.chase-51e.workers.dev/?utm_source=facebook&utm_medium=social&utm_campaign=2026-11-23-home-for-the-break&utm_content=fb-budget",
+      "image": "ads/budget-week-portrait.jpg",
+      "publicImage": "/m/2026-11-23/budget-week-portrait.jpg"
+    },
+    {
+      "id": "ig-home-break",
+      "channel": "instagram",
+      "when": "2026-11-24T19:30:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Travel day for the college crew.\n\nSend a check-in from FamGenie: they tap a one-time link or reply 1 when they land. At 18+, sharing is their call. You ask, they answer if they want to.\n\nFree to start. Link in bio.\n\n#thanksgiving #collegekids #homeforthebreak #parenting #momlife #dadlife",
+      "image": "ads/home-break-portrait.jpg",
+      "publicImage": "/m/2026-11-23/home-break-portrait.jpg"
+    },
+    {
+      "id": "ig-budget",
+      "channel": "instagram",
+      "when": "2026-11-27T12:30:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "\"Can I get money for the Black Friday sale?\"\n\nIn FamGenie, a kid's request shows what's left of their monthly budget after it. You approve, then pay in your own app. FamGenie never holds or moves money. Link in bio.\n\n#blackfriday #kidsandmoney #moneytalks #parenting #momlife #familybudget",
+      "image": "ads/budget-week-portrait.jpg",
+      "publicImage": "/m/2026-11-23/budget-week-portrait.jpg"
+    },
+    {
+      "id": "ig-monday-back",
+      "channel": "instagram",
+      "when": "2026-11-29T19:30:00-06:00",
+      "auto": true,
+      "skip": false,
+      "text": "Sunday night, school tomorrow. Was there a form?\n\nConnect Gmail (read-only) and FamGenie turns emails from teachers and the school, like forms, field trips and conferences, into to-dos with due dates. Disconnect any time. Link in bio.\n\n#backtoschool #sundayreset #parenting #momlife #dadlife #schoolmom",
+      "image": "ads/monday-back-portrait.jpg",
+      "publicImage": "/m/2026-11-23/monday-back-portrait.jpg"
+    },
+    {
+      "id": "li-eighteen",
+      "channel": "linkedin",
+      "when": "2026-11-24T12:00:00-06:00",
+      "auto": false,
+      "skip": false,
+      "text": "A design decision in FamGenie, the family assistant I'm building, that I keep coming back to this week: what changes the day a kid turns 18?\n\nFamGenie covers kids from 4 to 22, so it has to handle a first grader and a college junior in the same family. For the younger ones, a parent picks which check-in options fit their age and phone. At 18+, the app changes its own wording and behavior: sharing becomes the young adult's choice. FamGenie can send a one-time check-in link (it works once and expires in 15 minutes) or a \"reply 1 or 2\" text, and it's up to them to answer. Nothing runs in the background.\n\nThe lesson: respect is a feature. A parent of a 20-year-old flying home for Thanksgiving doesn't want surveillance, they want an easy way to ask \"landed?\" and an easy way for their kid to answer.\n\nIf you're a parent with someone coming home this week, it's free to start and I'd value honest feedback: https://famgenie.chase-51e.workers.dev/?utm_source=linkedin&utm_medium=community&utm_campaign=2026-11-23-home-for-the-break&utm_content=li-eighteen\n\n#buildinpublic #parenting",
+      "image": "ads/home-break-landscape.jpg",
+      "publicImage": null
+    },
+    {
+      "id": "rd-webdev-showoff",
+      "channel": "reddit",
+      "when": "2026-11-28T11:00:00-06:00",
+      "auto": false,
+      "skip": false,
+      "title": "Showoff Saturday: I built a family assistant on one Cloudflare Worker + D1, with no framework or build step",
+      "where": "r/webdev (Showoff Saturday thread/flair, Saturday only)",
+      "text": "Disclosure: I made this. FamGenie is a web app for parents (kids 4 to 22): check-ins, one inbox for tutors and coaches, kids' money requests a parent approves, schedules, and an AI morning brief. Sharing it here for the build, not the pitch.\n\nHow it's put together:\n- One Cloudflare Worker serves the static app and routes the API. Handlers use the Pages Functions shape (onRequestGet etc.), so the same code also runs as Pages.\n- D1 (SQLite). No migration files: tables are created in code on first use. Plain JS, no framework, no build step. One shared.js file is used by both the browser and the server (place matching, money math, phone formatting).\n- Check-in links are random server-issued tokens, stored hashed, single use, and expire in 15 minutes. Location readings are deleted after 30 days.\n- Twilio webhooks are signature-checked. Kids can text \"PAY 40 Priya tutoring\" and the parent gets a request; the app never holds or moves money, it just opens the parent's own payment app with the amount filled in.\n- A cron every 10 minutes handles late alerts and calendar refreshes (iCal/webcal links and read-only Google Calendar).\n- The AI only words things. Rules decide what needs a parent, message text is passed as data, and no phone numbers or locations go to the model.\n\nWithout accounts it opens a labeled demo with a sample family, so you can click around without signing up: https://famgenie.chase-51e.workers.dev/?utm_source=reddit&utm_medium=community&utm_campaign=2026-11-23-home-for-the-break&utm_content=rd-webdev-showoff\n\nHappy to go into any of it: the no-build setup, D1 without migrations, or the token design. Critique welcome.",
+      "image": "ads/home-break-landscape.jpg",
+      "publicImage": null
+    },
+    {
+      "id": "tt-home-break",
+      "channel": "tiktok",
+      "when": "2026-11-24T19:00:00-06:00",
+      "auto": false,
+      "skip": false,
+      "script": [
+        "0-2s: on-screen text \"Landed? Reply 1.\" over the FamGenie Kids section (hook)",
+        "2-6s: screen recording, sample family: open the college-age kid's card, it reads \"Shares when they choose\" (18+)",
+        "6-10s: tap Check in, choose the reply 1 or 2 text; show the message they'd get",
+        "10-13s: tap Reply \"1\" in the demo; Home updates to show they made it",
+        "13-15s: end card: you ask, they answer. Free to start, link in bio"
+      ],
+      "text": "My college kid flies home this week. Here's how I ask \"landed?\" without hovering. At 18+ it's their choice to answer. #parentsoftiktok #collegekids #thanksgiving #momtok #dadtok",
+      "image": "ads/home-break-story.jpg",
+      "publicImage": null
+    },
+    {
+      "id": "tt-sunday-reset",
+      "channel": "tiktok",
+      "when": "2026-11-29T18:30:00-06:00",
+      "auto": false,
+      "skip": false,
+      "script": [
+        "0-2s: on-screen text \"School tomorrow. Was there a form?\" over the Home brief (hook)",
+        "2-6s: screen recording, sample family: the Home brief lists the school-email to-dos (permission slip due Friday, conference sign-up)",
+        "6-10s: Inbox: open the tutor's text, tap the sparkle, a drafted reply appears; edit a word and send",
+        "10-13s: Money tab: each kid's monthly budget meter and what's left",
+        "13-15s: end card: Sunday reset, done. Free to start, link in bio"
+      ],
+      "text": "Sunday night after Thanksgiving: the 2-minute reset before school tomorrow. Forms, the tutor, the month's budget. #sundayreset #parentsoftiktok #momtok #backtoschool #familyorganization",
+      "image": "ads/monday-back-story.jpg",
+      "publicImage": null
+    },
+    {
+      "id": "grp-pto-monday",
+      "channel": "group",
+      "when": "2026-11-29T12:00:00-06:00",
+      "auto": false,
+      "skip": false,
+      "where": "A local parents' Facebook group or school PTO page (message the admin first and only post with their OK)",
+      "text": "Hi all, a quick tip before school starts back tomorrow: search your email for the school's domain plus \"form\", \"permission\" or \"due\" from the last week. That's how we found a field-trip slip that came out the day before break.\n\nFull disclosure, I made a small app called FamGenie that does this part for us: with Gmail connected (read-only), emails from teachers and the school become to-dos with due dates, next to each kid's schedule and the tutor and coach texts. I asked the admins first and they said it was OK to share. It's free to start, and I'd really like honest feedback from other parents: https://famgenie.chase-51e.workers.dev/?utm_source=group&utm_medium=community&utm_campaign=2026-11-23-home-for-the-break&utm_content=grp-pto-monday",
+      "image": null,
+      "publicImage": null
+    }
+  ]
+}

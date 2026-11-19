@@ -86,6 +86,21 @@
         ]
       },
       {
+        "name": "kids-adult",
+        "path": "/#home",
+        "steps": [
+          {
+            "scroll": "article.kid:has-text('Sophomore')"
+          },
+          {
+            "scrollBy": -60
+          },
+          {
+            "wait": 400
+          }
+        ]
+      },
+      {
         "name": "today",
         "path": "/#home",
         "steps": [
