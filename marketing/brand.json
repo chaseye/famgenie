@@ -122,6 +122,39 @@
             "wait": 400
           }
         ]
+      },
+      {
+        "name": "held",
+        "path": "/#inbox",
+        "steps": [
+          {
+            "click": "[data-act=inboxTab][data-tab=held]"
+          },
+          {
+            "wait": 400
+          },
+          {
+            "click": ".item:has-text('Westside swim club')"
+          },
+          {
+            "wait": 600
+          }
+        ]
+      },
+      {
+        "name": "money-where",
+        "path": "/#money",
+        "steps": [
+          {
+            "scroll": "h2:has-text('Where it went')"
+          },
+          {
+            "scrollBy": -90
+          },
+          {
+            "wait": 400
+          }
+        ]
       }
     ]
   }
