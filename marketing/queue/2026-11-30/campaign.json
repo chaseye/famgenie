@@ -1,0 +1,283 @@
+{
+  "week": "2026-11-30",
+  "theme": "A quieter December",
+  "goal": "Sign-ups from this week's tracked links (utm_campaign 2026-11-30-a-quieter-december), compared by utm_content to see which angle brings the most: choosing who can reach you (Held), groups that stay on their own app, or the gift-season money tally.",
+  "why": "School restarts Monday Nov 30 after Thanksgiving, and December stacks up fast: winter concerts, class parties, teacher-gift collections, end-of-season team messages, sign-up promos, and kids asking for gift money. Every angle this week ships today and has never led a week: contacts you haven't allowed (and numbers not in your contacts) wait in Held without notifying you; groups that only use ClassDojo, Remind, GroupMe or WhatsApp can be marked so FamGenie opens that app instead; allowances, card top-ups and the per-category 'Where it went' tally (including a Gifts category) with money paid in the parent's own apps, never held or moved by FamGenie; and the brief on Home that sorts what needs you first and folds held messages into one line. Earlier weeks (Meet FamGenie; Holiday week, one plan; Home for the break) led with check-ins, the inbox in general, money requests, schedules, conflicts, late alerts, Ask, 18+ check-ins, drafted replies, the budget meter and Gmail to-dos. None of those PRs is merged and nothing has been posted; there is no results.md, so nothing is claimed about past performance.",
+  "ads": [
+    {
+      "id": "held",
+      "layout": "phone",
+      "screen": "held",
+      "theme": "dark",
+      "headline": "December texts, **on your terms.**",
+      "sub": "Contacts you allow reach you. Everyone else waits in Held, without a ping.",
+      "cta": "Choose who reaches you",
+      "formats": [
+        "portrait",
+        "landscape",
+        "story"
+      ],
+      "focus": "0%"
+    },
+    {
+      "id": "group-apps",
+      "layout": "statement",
+      "theme": "light",
+      "badge": "Class app? PTO app?",
+      "headline": "Their app? **One tap away.**",
+      "sub": "Mark groups that use ClassDojo, Remind, GroupMe or WhatsApp; FamGenie opens it.",
+      "cta": "Sort your groups",
+      "formats": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "gift-tally",
+      "layout": "phone",
+      "screen": "money-where",
+      "theme": "dark",
+      "headline": "Where December **went.**",
+      "sub": "Allowances, card top-ups, spending by category. You pay in your own apps; FamGenie never holds or moves money.",
+      "cta": "See where it went",
+      "formats": [
+        "portrait",
+        "story"
+      ],
+      "focus": "0%"
+    },
+    {
+      "id": "december-brief",
+      "layout": "phone",
+      "screen": "home",
+      "theme": "light",
+      "headline": "What needs you, **first.**",
+      "sub": "The brief on Home sorts it; held messages fold into one line.",
+      "cta": "Try it free",
+      "formats": [
+        "landscape"
+      ],
+      "focus": "0%"
+    }
+  ],
+  "posts": [
+    {
+      "id": "fb-held",
+      "channel": "facebook",
+      "ad": "held",
+      "when": "2026-11-30T19:30:00-06:00",
+      "text": "First week back after Thanksgiving, and the December texts have already started: concert call times, party sign-ups, the team photo order, and a few \"register now and save\" messages you never asked for.\n\nIn FamGenie you choose who can reach you. Tutors, teachers and coaches you've allowed land in your inbox. Anyone you've turned off, and any number that isn't in your contacts, waits in a Held tab and doesn't notify you. Look when you have a minute, and allow or add them with one tap.\n\nFree to start. {link}"
+    },
+    {
+      "id": "fb-group-apps",
+      "channel": "facebook",
+      "ad": "group-apps",
+      "when": "2026-12-02T12:15:00-06:00",
+      "text": "Not every group is going to switch apps for you. The class uses one app, the PTO lives in WhatsApp, the team uses GroupMe.\n\nFamGenie doesn't pretend otherwise. When you add a group, pick \"They use ClassDojo\" (or Remind, GroupMe, WhatsApp, Seesaw, ParentSquare). It's labeled External in your contacts, and opening it in FamGenie gives you a button straight to their app, so you know where each conversation lives. Everyone else texts one family number and lands in one inbox.\n\nOne list of who's who, even when the chats are in different places. {link}"
+    },
+    {
+      "id": "fb-gift-tally",
+      "channel": "facebook",
+      "ad": "gift-tally",
+      "when": "2026-12-04T19:00:00-06:00",
+      "text": "December money, from the parent side: the teacher-gift collection, the class party, the gift exchange, a December allowance, and \"can you put $20 on my card?\"\n\nIn FamGenie you record allowances and card top-ups per kid, and every payment gets a category. The Money tab shows the month's spending and a \"Where it went\" list by category, Gifts included, so January isn't a surprise.\n\nFamGenie never holds or moves money. You pay in your own Venmo, Zelle, PayPal, Cash App, your kid's card app or cash, and it keeps the tally.\n\nFree to start. {link}"
+    },
+    {
+      "id": "ig-held",
+      "channel": "instagram",
+      "ad": "held",
+      "when": "2026-12-01T19:30:00-06:00",
+      "text": "December inbox, on your terms.\n\nIn FamGenie, the tutor, the teacher and the coach reach you. Numbers you haven't allowed wait in Held, quietly, until you look. Allow or add them with one tap.\n\nFree to start. Link in bio.\n\n#december #parenting #momlife #dadlife #schoolmom #familyorganization"
+    },
+    {
+      "id": "ig-group-apps",
+      "channel": "instagram",
+      "ad": "group-apps",
+      "when": "2026-12-03T19:30:00-06:00",
+      "text": "The class uses one app. The PTO uses another. The team uses a third.\n\nIn FamGenie, mark a group as using its own app and it gets an Open button that takes you there. Everyone else texts one family number. One list of who's who. Link in bio.\n\n#ptomom #schoolparents #parenting #momlife #dadlife #familyorganization"
+    },
+    {
+      "id": "ig-gift-tally",
+      "channel": "instagram",
+      "ad": "gift-tally",
+      "when": "2026-12-05T12:30:00-06:00",
+      "text": "Teacher gifts, class party, gift exchange, December allowance.\n\nFamGenie keeps a per-kid tally of allowances, card top-ups and payments by category, so you can see where December went. You pay in your own apps; FamGenie never holds or moves money. Link in bio.\n\n#holidaybudget #kidsandmoney #allowance #parenting #momlife #familybudget"
+    },
+    {
+      "id": "li-who-can-reach",
+      "channel": "linkedin",
+      "ad": "december-brief",
+      "when": "2026-12-01T12:00:00-06:00",
+      "text": "A lesson from building FamGenie, the family assistant I'm working on: the most useful inbox feature isn't a smarter inbox, it's deciding who gets in.\n\nFamGenie gives a family one number for tutors, teachers and coaches. Early on I treated every incoming text the same. That's fine until December, when a parent hears from every activity at once, plus sign-up promos and numbers they don't recognize.\n\nSo parents choose who can reach them. Contacts they've allowed land in the inbox. Anyone they've turned off, and any number that isn't a contact, waits in a Held tab with no notification. The brief on Home rolls all of that into one line instead of a list.\n\nThe second lesson was humility: some groups will only ever use their own app. Rather than fight that, a parent can mark a group as using ClassDojo, Remind, GroupMe or WhatsApp, and FamGenie opens that app for them.\n\nIt's free to start, and I'd value honest feedback from parents: {link}\n\n#buildinpublic #parenting"
+    },
+    {
+      "id": "rd-imadethis",
+      "channel": "reddit",
+      "ad": "held",
+      "where": "r/IMadeThis (verify rules before posting)",
+      "when": "2026-12-02T12:00:00-06:00",
+      "note": "Could not read r/IMadeThis's rules automatically (the rules.json fetch was not permitted). A third-party directory (thehiveindex.com) describes it as a subreddit for self-promoters, with members sharing their own apps, but that is not the rules. Before posting, open the sidebar and rules by hand: confirm apps and websites are allowed, check any flair, link or account-age requirements, and drop the post if commercial projects aren't allowed. Not reused from the earlier r/SideProject, r/alphaandbetausers or r/webdev posts.",
+      "title": "I made a family inbox where unknown numbers wait in a Held tab, and groups that live on other apps just get an Open button",
+      "text": "Disclosure: I made this. FamGenie is a web app for parents of kids 4 to 22. This post is about one part of it: the inbox, and two decisions I made after watching how December goes for a parent.\n\n1. You choose who can reach you. Tutors, teachers, coaches and sitters text one family number. Contacts you've allowed land in the inbox. Contacts you've turned off, and numbers that aren't in your contacts, wait in a Held tab and don't notify you. Each held thread has one button: Allow messages, or Add as contact. The brief on Home sums held messages up in one line instead of listing them.\n\n2. I stopped trying to replace every group chat. Some classes only use ClassDojo, some PTOs only use WhatsApp, some teams only use GroupMe. When you add a group you can pick \"They use ...\" and FamGenie shows an Open button for that app instead of a composer that nobody on the other end would read.\n\nWithout an account it opens a labeled demo with a sample family, so you can try both in the Inbox tab without signing up: {link}\n\nI'd like critique on the Held idea in particular. Is \"not in your contacts means held\" too strict for a parent, or not strict enough?"
+    },
+    {
+      "id": "tt-december-tour",
+      "channel": "tiktok",
+      "ad": "held",
+      "video": "december-tour",
+      "when": "2026-12-01T19:00:00-06:00",
+      "text": "December texts are starting. Here's how I decide who can actually reach me, and what happens to everyone else. #parentsoftiktok #momtok #dadtok #december #familyorganization",
+      "script": [
+        "0-2s: on-screen text \"December texts, on your terms\" over the held Westside swim club thread (hook)",
+        "2-6s: screen recording, sample family: the brief on Home lists what needs you first; tap Inbox, then the Held (1) tab",
+        "6-9s: Westside swim club's sign-up promo is waiting in Held, no notification; open it and show the \"Allow messages\" button",
+        "9-12s: Family tab: Lincoln High PTO is marked External; open it and show \"Where you talk: They use WhatsApp\"",
+        "12-15s: end card: you choose who reaches you. Free to start, link in bio"
+      ]
+    },
+    {
+      "id": "tt-gift-money",
+      "channel": "tiktok",
+      "ad": "gift-tally",
+      "video": "gift-money-tour",
+      "when": "2026-12-06T18:30:00-06:00",
+      "text": "Sunday money check before the December rush: allowances, card top-ups, and where it all went. I pay in my own apps; this just keeps the tally. #parentsoftiktok #kidsandmoney #allowance #momtok #holidaybudget",
+      "script": [
+        "0-2s: on-screen text \"Where did December's money go?\" over the Money tab (hook)",
+        "2-6s: screen recording, sample family: the month's spending, each kid's line, and \"added to cards and allowances\"",
+        "6-10s: tap Allowance: the sheet switches between Payment, Card top-up and Allowance; pick a kid and an amount",
+        "10-13s: scroll to \"Where it went\": spending by category for the month",
+        "13-15s: end card: you pay in your own apps; FamGenie never holds or moves money. Free to start, link in bio"
+      ]
+    },
+    {
+      "id": "grp-pto-december",
+      "channel": "group",
+      "where": "A local parents' Facebook group or school PTO page (message the admin first and only post with their OK)",
+      "when": "2026-12-03T12:00:00-06:00",
+      "text": "Hi all, a small December tip that has made our phones calmer: make a note of which app each group actually uses (class, PTO, team, choir) and who the real contact is for each. When the concert call time changes, you know where to look, and anything from a number you don't recognize can wait.\n\nFull disclosure, I made a small app called FamGenie that does this for our family: tutors, teachers and coaches text one number, anyone we haven't allowed waits in a Held tab without notifying us, and groups that only use their own app get a button that opens it. I asked the admins first and they said it was OK to share. It's free to start, and I'd really like honest feedback from other parents: {link}"
+    }
+  ],
+  "videos": [
+    {
+      "id": "december-tour",
+      "intro": "held",
+      "outro": "held",
+      "path": "/#home",
+      "steps": [
+        {
+          "wait": 700
+        },
+        {
+          "scrollBy": 260
+        },
+        {
+          "wait": 1300
+        },
+        {
+          "click": "a[href='#inbox']"
+        },
+        {
+          "wait": 900
+        },
+        {
+          "click": "[data-act=inboxTab][data-tab=held]"
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "click": ".item:has-text('Westside swim club')"
+        },
+        {
+          "wait": 1900
+        },
+        {
+          "click": "a[aria-label=Back]"
+        },
+        {
+          "wait": 300
+        },
+        {
+          "click": "[data-act=inboxTab][data-tab=inbox]"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "click": "a[href='#family']"
+        },
+        {
+          "wait": 300
+        },
+        {
+          "scroll": "text=Lincoln High PTO"
+        },
+        {
+          "scrollBy": -300
+        },
+        {
+          "wait": 900
+        },
+        {
+          "click": "button.item:has-text('Lincoln High PTO')"
+        },
+        {
+          "wait": 2000
+        }
+      ]
+    },
+    {
+      "id": "gift-money-tour",
+      "intro": "gift-tally",
+      "outro": "gift-tally",
+      "path": "/#money",
+      "steps": [
+        {
+          "wait": 1800
+        },
+        {
+          "click": "[data-act=record][data-kind=allowance]"
+        },
+        {
+          "wait": 1300
+        },
+        {
+          "click": "[data-act=recordKind][data-kind=topup]"
+        },
+        {
+          "wait": 900
+        },
+        {
+          "click": "[data-act=recordKind][data-kind=payment]"
+        },
+        {
+          "wait": 900
+        },
+        {
+          "click": "[data-act=recordKind][data-kind=allowance]"
+        },
+        {
+          "wait": 800
+        },
+        {
+          "click": "#sheet [data-act=closeSheet]"
+        },
+        {
+          "wait": 700
+        },
+        {
+          "scroll": "h2:has-text('Where it went')"
+        },
+        {
+          "wait": 300
+        },
+        {
+          "scrollBy": -110
+        },
+        {
+          "wait": 2600
+        }
+      ]
+    }
+  ]
+}
